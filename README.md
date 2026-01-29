@@ -3,7 +3,7 @@ This program converts any given png, jpg, or gif image file into the Genshin Imp
 * Genshin Impact: A New World - This is the first namecard you get and the top banner in the namecard selection screen for this one is actually 2 different hashes combined while every other namecard is a single hash. I am not going to put in the time to figure out how to make that single instance work, so the top banner for this namecard is incorrect and will stay that way unless someone else wants to figure it out.
 * Fontaine: Redemption - This one slightly different dimensions, 843 pixels vs the standard 840 pixels wide, so I just didn't add it to the list since I would have to hard code in the hash that can change in the future for a special case.
 
-The actual mod format I took for the .ini files is from [papadude86](https://gamebanana.com/members/2721194) on Gamebanana, so all of their mods should work if you want to make one big namecard megatoggle with parts of those as well. I would recommend renaming the mod folders from those to be unique if you do that. The UI is heavily inspired from gui_collect because I'm bad at making a good UI and the gui_collect UI fits what I needed for this. It's not pretty, but it works.
+The actual mod format I took for the .ini files is from [papadude86](https://gamebanana.com/members/2721194) on Gamebanana (WARNING: NSFW), so all of their mods should work if you want to make one big namecard megatoggle with parts of those as well. I would recommend renaming the mod folders from those to be unique if you do that. The UI is heavily inspired from gui_collect because I'm bad at making a good UI and the gui_collect UI fits what I needed for this. It's not pretty, but it works.
 
 ## How does it work?
 
