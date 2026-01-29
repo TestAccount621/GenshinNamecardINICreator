@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>Icons\Item_Genshin_Impact_A_New_World.ico</ApplicationIcon>
+    <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+	<PublishSingleFile>true</PublishSingleFile>
+	<StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Icons\down-arrow.png" />
+    <None Remove="Icons\left-arrow.png" />
+    <None Remove="Icons\open-folder.png" />
+    <None Remove="Icons\refresh.png" />
+    <None Remove="Icons\right-arrow.png" />
+    <None Remove="Icons\right_arrow.png" />
+    <None Remove="Icons\send.png" />
+    <None Remove="Icons\up-arrow.png" />
+    <None Remove="namecard_hashes.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Icons\Item_Genshin_Impact_A_New_World.ico" />
+    <Content Include="namecard_hashes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Icons\down-arrow.png" />
+    <Resource Include="Icons\left-arrow.png" />
+    <Resource Include="Icons\open-folder.png" />
+    <Resource Include="Icons\refresh.png" />
+    <Resource Include="Icons\right_arrow.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Icons\up-arrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="System.Drawing.Common" Version="10.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>

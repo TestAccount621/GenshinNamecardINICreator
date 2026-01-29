@@ -1,0 +1,55 @@
+﻿<Page x:Class="GenshinNamecardAutomater.UI.ConvertPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:GenshinNamecardAutomater.UI"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="500"
+      Title="ConverGIFPage" Background="LightGray" >
+    <Page.Resources>
+        <Style x:Key="baseButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Width" Value="60" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button Content="Select Image(s)" Click="Button_Click_Open" Style="{StaticResource baseButtonStyle}" Width="90" Grid.Column="0" Grid.Row="0" Margin="10,10,10,0" />
+        <ListView x:Name="lv_SelectedGIFs"
+                  Grid.Row="1" Grid.Column="0" Margin="10" 
+                  ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                  ScrollViewer.CanContentScroll="True" 
+                  ScrollViewer.VerticalScrollBarVisibility="Auto"
+                  SelectionMode="Extended" 
+                  SelectionChanged="lv_SelectedGIFs_SelectionChanged" />
+        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="0,10,10,10">
+            <Button x:Name="btn_Remove" 
+                    Content="Remove"
+                    Margin="0,0,0,5"
+                    Click="Button_Click_Remove"
+                    IsEnabled="False"
+                    Style="{StaticResource baseButtonStyle}">
+            </Button>
+            <Button Content="Convert" Click="Button_Click_Convert">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseButtonStyle}">
+                        <Setter Property="IsEnabled" Value="True" />
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Items.Count, ElementName=lv_SelectedGIFs}" Value="0">
+                                <Setter Property="IsEnabled" Value="False" />
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
