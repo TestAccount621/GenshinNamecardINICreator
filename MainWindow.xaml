@@ -1,10 +1,10 @@
-﻿<Window x:Class="GenshinNamecardAutomater.MainWindow"
+﻿<Window x:Class="GenshinNamecardINICreator.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:GenshinNamecardAutomater"
-        xmlns:statics="clr-namespace:GenshinNamecardAutomater.classes"
+        xmlns:local="clr-namespace:GenshinNamecardINICreator"
+        xmlns:statics="clr-namespace:GenshinNamecardINICreator.classes"
         mc:Ignorable="d"
         Title="Genshin Namecard Creator" Height="450" Width="850" FontSize="16" Background="LightGray"
         ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">

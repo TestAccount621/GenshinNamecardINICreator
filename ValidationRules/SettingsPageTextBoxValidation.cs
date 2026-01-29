@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Controls;
 
-namespace GenshinNamecardAutomater.ValidationRules
+namespace GenshinNamecardINICreator.ValidationRules
 {
 
     public class HashValuesTextBoxValidation : ValidationRule

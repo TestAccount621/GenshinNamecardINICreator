@@ -1,6 +1,6 @@
 ﻿using System.Windows.Data;
 
-namespace GenshinNamecardAutomater.ValidationRules
+namespace GenshinNamecardINICreator.ValidationRules
 {
     public class BooleanOrConverter : IMultiValueConverter
     {

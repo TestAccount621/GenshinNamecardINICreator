@@ -1,10 +1,10 @@
-﻿using GenshinNamecardAutomater.Properties;
+﻿using GenshinNamecardINICreator.Properties;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GenshinNamecardAutomater.UI
+namespace GenshinNamecardINICreator.UI
 {
     /// <summary>
     /// Interaction logic for CreateCollectionPage.xaml

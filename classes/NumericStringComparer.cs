@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace GenshinNamecardAutomater.classes
+namespace GenshinNamecardINICreator.classes
 {
     public sealed class NumericStringComparer : IComparer<string>
     {

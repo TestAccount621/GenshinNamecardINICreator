@@ -1,4 +1,4 @@
-﻿using GenshinNamecardAutomater.classes;
+﻿using GenshinNamecardINICreator.classes;
 using Newtonsoft.Json;
 using System.ComponentModel;
 using System.IO;
@@ -6,7 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 
-namespace GenshinNamecardAutomater.UI
+namespace GenshinNamecardINICreator.UI
 {
     /// <summary>
     /// Interaction logic for HashesPage.xaml

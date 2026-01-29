@@ -1,7 +1,7 @@
-﻿using GenshinNamecardAutomater.classes;
+﻿using GenshinNamecardINICreator.classes;
 using System.Windows;
 
-namespace GenshinNamecardAutomater.UI
+namespace GenshinNamecardINICreator.UI
 {
     /// <summary>
     /// Interaction logic for ConfirmationWindow.xaml

@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel;
 
-namespace GenshinNamecardAutomater.classes
+namespace GenshinNamecardINICreator.classes
 {
     public class NamecardData : INotifyPropertyChanged
     {

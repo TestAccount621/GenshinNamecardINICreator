@@ -1,5 +1,5 @@
-﻿using GenshinNamecardAutomater.classes;
-using GenshinNamecardAutomater.Properties;
+﻿using GenshinNamecardINICreator.classes;
+using GenshinNamecardINICreator.Properties;
 using Microsoft.Win32;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GenshinNamecardAutomater
+namespace GenshinNamecardINICreator
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

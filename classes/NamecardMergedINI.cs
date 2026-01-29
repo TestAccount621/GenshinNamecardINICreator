@@ -1,9 +1,9 @@
-﻿using GenshinNamecardAutomater.Properties;
+﻿using GenshinNamecardINICreator.Properties;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 
-namespace GenshinNamecardAutomater.classes
+namespace GenshinNamecardINICreator.classes
 {
     public class NamecardMergedINI
     {

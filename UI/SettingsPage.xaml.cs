@@ -1,11 +1,11 @@
-﻿using GenshinNamecardAutomater.Properties;
+﻿using GenshinNamecardINICreator.Properties;
 using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace GenshinNamecardAutomater.UI
+namespace GenshinNamecardINICreator.UI
 {
     /// <summary>
     /// Interaction logic for SettingsPage.xaml
