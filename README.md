@@ -16,7 +16,7 @@ The actual mod format I took for the .ini files is from [papadude86](https://gam
 ## The hashes are wrong and/or changed
 
 This where the "Update Hashes" page comes into play. If I'm not updating this anymore, which I made this intending to be a one and done that ended up being a public release. Perform a [hash dump](https://leotorrez.github.io/modding/guides/hunting#performing-the-actions) while you have the namecard you are trying to find currently selected as shown below. It should not take more than a few seconds depending on your hard drive speed.<img width="1920" height="974" alt="namecardscreen" src="https://github.com/user-attachments/assets/c09254ec-2420-4372-ae3e-7c69cd4101c9" />
-Then, go into the newly created frame dump folder to search for ".dds" and change your View to "Extra Large Icons" to make it easier to find the 3 different files you want. 
+Then, go into the newly created frame dump folder to search for ".dds" and change your View to "Extra Large Icons" to make it easier to find the 3 different files you want. This is actually how you dump any UI element in GI as far as I know.
 <img width="1600" height="860" alt="preview1" src="https://github.com/user-attachments/assets/b0948d46-42d5-46a2-9519-971c372c59d4" />
 You can see the "Main Hash" that the program wants at the bottom right. The hash value is the first part of the  filename, d3768864 for this case. The other two parts look like below and you can see their hashes in the filename as well:
 
