@@ -1,6 +1,7 @@
 ﻿using GenshinNamecardINICreator.Properties;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Windows;
 
 namespace GenshinNamecardINICreator.classes
@@ -17,16 +18,36 @@ namespace GenshinNamecardINICreator.classes
             _parentDirectory = directories[0].Parent.FullName;
             string mergedINIpath = Path.Combine(_parentDirectory, _fileName);
             int swapmax = 0;
+            List<String> failed = new List<String>();
             foreach (DirectoryInfo d in directories)
             {
-                var namecardINI = new NamecardSingleINI(d, swapmax, namecard);
-                swapmax++;
+                if (Directory.Exists(d.FullName))
+                {
+                    var namecardINI = new NamecardSingleINI(d, swapmax, namecard);
+                    swapmax++;
+                }
+                else
+                {
+                    failed.Add(d.Name);
+                }
             }
             if (swapmax > 0)
             {
                 CreateMergedINI(mergedINIpath, swapmax, namecard);
             }
-            MessageBox.Show("Namecard mod created!");
+            if (failed.Count > 0)
+            {
+                string message = "The following folders were not added to the collection since they were renamed or removed between the last refresh and now:";
+                foreach (String name in failed)
+                {
+                    message += "\n" + name;
+                }
+                MessageBox.Show(message);
+            }
+            else
+            {
+                MessageBox.Show("Namecard mod created!");
+            }
         }
 
         private void CreateMergedINI(string path, int swapmax, NamecardData namecard)

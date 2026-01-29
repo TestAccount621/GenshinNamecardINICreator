@@ -11,38 +11,46 @@ namespace GenshinNamecardINICreator.classes
 
         public NamecardSingleINI(DirectoryInfo name, int swapcard, NamecardData namecard)
         {
-            iniName = name.FullName + @"\namecard.ini";
-            sortedFiles.Clear();
-            extraFiles.Clear();
-            var files = name.GetFiles().Where(x => x.Extension.Equals(".png")).ToList();
-            List<string> fileNames = [];
-            foreach (var file in files)
+            try
             {
-                fileNames.Add(Path.GetFileNameWithoutExtension(file.Name));
+                iniName = name.FullName + @"\namecard.ini";
+                sortedFiles.Clear();
+                extraFiles.Clear();
+                var files = name.GetFiles().Where(x => x.Extension.Equals(".png")).ToList();
+                List<string> fileNames = [];
+                foreach (var file in files)
+                {
+                    fileNames.Add(Path.GetFileNameWithoutExtension(file.Name));
+                }
+                fileNames.Sort(new NumericStringComparer());
+                int test;
+                foreach (var fi in fileNames)
+                {
+                    if (Int32.TryParse(fi.Last().ToString(), out test))
+                    {
+                        sortedFiles.Add(fi);
+                    }
+                    else
+                    {
+                        extraFiles.Add(fi);
+                    }
+                }
+                if (sortedFiles.Count > 0)
+                {
+                    if (sortedFiles.Count == 1)
+                    {
+                        CreateNameCardSingleImage_INI(swapcard, namecard);
+                    }
+                    else if (sortedFiles.Count > 1)
+                    {
+                        CreateNameCardGIF_INI(swapcard, namecard);
+                    }
+                }
             }
-            fileNames.Sort(new NumericStringComparer());
-            int test;
-            foreach (var fi in fileNames)
+            catch (Exception e)
             {
-                if (Int32.TryParse(fi.Last().ToString(), out test))
-                {
-                    sortedFiles.Add(fi);
-                }
-                else
-                {
-                    extraFiles.Add(fi);
-                }
-            }
-            if (sortedFiles.Count > 0)
-            {
-                if (sortedFiles.Count == 1)
-                {
-                    CreateNameCardSingleImage_INI(swapcard, namecard);
-                }
-                else if (sortedFiles.Count > 1)
-                {
-                    CreateNameCardGIF_INI(swapcard, namecard);
-                }
+                MessageBox.Show(e.Message);
+                throw;
             }
         }
         /// <summary>
