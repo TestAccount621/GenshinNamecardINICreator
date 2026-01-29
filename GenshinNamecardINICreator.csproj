@@ -8,7 +8,6 @@
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Icons\Item_Genshin_Impact_A_New_World.ico</ApplicationIcon>
     <AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
-	<PublishSingleFile>true</PublishSingleFile>
 	<StartupObject></StartupObject>
   </PropertyGroup>
 
