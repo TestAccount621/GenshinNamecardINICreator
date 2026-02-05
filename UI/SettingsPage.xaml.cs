@@ -26,7 +26,7 @@ namespace GenshinNamecardINICreator.UI
                 if (_keyPauseText != value)
                 {
                     _keyPauseText = value;
-                    NotifyPropertyChanged("keyPauseText");
+                    NotifyPropertyChanged(nameof(keyPauseText));
                 }
             }
         }
@@ -39,7 +39,7 @@ namespace GenshinNamecardINICreator.UI
                 if (_keyCycleFText != value)
                 {
                     _keyCycleFText = value;
-                    NotifyPropertyChanged("keyCycleFText");
+                    NotifyPropertyChanged(nameof(keyCycleFText));
                 }
             }
         }
@@ -52,7 +52,20 @@ namespace GenshinNamecardINICreator.UI
                 if (_keyCycleBText != value)
                 {
                     _keyCycleBText = value;
-                    NotifyPropertyChanged("keyCycleBText");
+                    NotifyPropertyChanged(nameof(keyCycleBText));
+                }
+            }
+        }
+        private string _keyCycleRText = "";
+        public string keyCycleRText
+        {
+            get => _keyCycleRText;
+            set
+            {
+                if (_keyCycleRText != value)
+                {
+                    _keyCycleRText = value;
+                    NotifyPropertyChanged(nameof(keyCycleRText));
                 }
             }
         }
@@ -65,6 +78,7 @@ namespace GenshinNamecardINICreator.UI
             keyPauseText = Settings.Default.KeyPause;
             keyCycleFText = Settings.Default.KeyCycleForward;
             keyCycleBText = Settings.Default.KeyCycleBackward;
+            keyCycleRText = Settings.Default.KeyCycleRandom;
         }
 
         private void cbx_RandomLogin_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -91,6 +105,7 @@ namespace GenshinNamecardINICreator.UI
                 Settings.Default.KeyPause = txtBox_KeyPause.Text;
                 Settings.Default.KeyCycleForward = txtBox_KeyCycleForward.Text;
                 Settings.Default.KeyCycleBackward = txtBox_KeyCycleBackward.Text;
+                Settings.Default.KeyCycleRandom = txtBox_KeyCycleRandom.Text;
                 Settings.Default.Save();
             }
             else
@@ -103,7 +118,8 @@ namespace GenshinNamecardINICreator.UI
         {
             return !String.IsNullOrWhiteSpace(txtBox_KeyPause.Text)
                 || !String.IsNullOrWhiteSpace(txtBox_KeyCycleForward.Text)
-                || !String.IsNullOrWhiteSpace(txtBox_KeyCycleBackward.Text);
+                || !String.IsNullOrWhiteSpace(txtBox_KeyCycleBackward.Text)
+                || !String.IsNullOrWhiteSpace(txtBox_KeyCycleRandom.Text);
         }
 
 
@@ -179,6 +195,9 @@ namespace GenshinNamecardINICreator.UI
                     var output = ConvertSingleCharacterHotkey(keysPressedText);
                     switch (textBox.Name)
                     {
+                        case "txtBox_KeyCycleRandom":
+                            keyCycleRText = output.Equals("") ? keyCycleRText : output;
+                            break;
                         case "txtBox_KeyCycleBackward":
                             keyCycleBText = output.Equals("") ? keyCycleBText : output;
                             break;
@@ -191,6 +210,10 @@ namespace GenshinNamecardINICreator.UI
                     }
                     keysPressedText = "";
                     Save();
+
+                    // These lines just remove the focus from the textbox after the keybind is set to change the background back to default.
+                    FocusManager.SetFocusedElement(FocusManager.GetFocusScope(textBox), null);
+                    Keyboard.ClearFocus();
                 }
             }
         }

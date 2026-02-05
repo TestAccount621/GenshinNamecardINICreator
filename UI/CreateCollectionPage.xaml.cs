@@ -50,7 +50,7 @@ namespace GenshinNamecardINICreator.UI
                             {
                                 foreach (var file in files)
                                 {
-                                    // Checks the 5th line of the ini since that SHOULD be where the $swapcard variable is placed.
+                                    // Checks the 6th line of the ini since that SHOULD be where the $swapcard variable is placed.
                                     var line = File.ReadLines(file.FullName).Skip(5).FirstOrDefault();
                                     if (line != null)
                                     {

@@ -24,29 +24,35 @@
         <ListView x:Name="lv_NotInCollection" Grid.Row="1" Grid.RowSpan="2" Grid.Column="0" Margin="5" DisplayMemberPath="Name" />
         <ListView x:Name="lv_InCollection" Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Margin="5" DisplayMemberPath="Name" />
         <StackPanel Orientation="Vertical" Margin="5" Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" VerticalAlignment="Center">
-            <Button x:Name="btn_RightArrow" Height="40" Width="40" Margin="0,0,0,5" Click="Button_Click_RightArrow">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
+            <Button x:Name="btn_RightArrow" Height="40" Width="40" Click="Button_Click_RightArrow" Style="{StaticResource BaseButtonStyle}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Image Source="pack://application:,,,/Icons/right_arrow.png" />
                 </StackPanel>
             </Button>
-            <Button x:Name="btn_LeftArrow" Height="40" Width="40" Click="Button_Click_LeftArrow">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
+            <TextBlock Focusable="False" IsEnabled="False" Height="10" />
+            <Button x:Name="btn_LeftArrow" Height="40" Width="40" Click="Button_Click_LeftArrow" Style="{StaticResource BaseButtonStyle}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Image Source="pack://application:,,,/Icons/left-arrow.png" />
                 </StackPanel>
             </Button>
         </StackPanel>
         <StackPanel Orientation="Vertical" Margin="0,5,5,5" Grid.Row="1" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Left">
-            <Button x:Name="btn_UpArrow" Height="40" Width="40" Margin="0,0,0,5" Click="Button_Click_Up">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
+            <Button x:Name="btn_UpArrow" Height="40" Width="40" Click="Button_Click_Up" Style="{StaticResource BaseButtonStyle}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Image Source="pack://application:,,,/Icons/up-arrow.png" />
                 </StackPanel>
             </Button>
-            <Button x:Name="btn_DownArrow" Height="40" Width="40" Click="Button_Click_Down">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
+            <TextBlock Focusable="False" IsEnabled="False" Height="10" />
+            <Button x:Name="btn_DownArrow" Height="40" Width="40" Click="Button_Click_Down" Style="{StaticResource BaseButtonStyle}">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Image Source="pack://application:,,,/Icons/down-arrow.png" />
                 </StackPanel>
             </Button>
         </StackPanel>
-        <Button x:Name="btn_Create" Content="Create" Grid.Column="1" Grid.Row="1" Height="30" Width="55" VerticalAlignment="Top" Margin="5" Click="Button_Click_Create" />
+        <StackPanel Margin="0, 5, 0, 0" Grid.Column="1" Grid.Row="1">
+            <Button x:Name="btn_Create" Content="Create"
+                VerticalAlignment="Top" Click="Button_Click_Create"
+                Style="{StaticResource BaseButtonStyle}" />
+        </StackPanel>
     </Grid>
 </Page>

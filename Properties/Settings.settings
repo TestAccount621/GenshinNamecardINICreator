@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GenshinNamecardAutomater.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GenshinNamecardINICreator.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
     <Setting Name="OutputFolder" Type="System.String" Scope="User">
@@ -16,6 +16,9 @@
     </Setting>
     <Setting Name="RandomLogin" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="KeyCycleRandom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">a VK_DOWN</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -14,6 +14,12 @@
             <Setter Property="Width" Value="200" />
             <Setter Property="HorizontalAlignment" Value="Left" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="DarkGray" />
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="Background" Value="White" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="textBoxKeybindVlaidations" TargetType="{x:Type TextBox}" BasedOn="{StaticResource textBoxBaseStyle}">
             <Setter Property="Grid.Column" Value="1" />
@@ -40,11 +46,12 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Label Content="Keybinds:" Grid.Column="0" Grid.Row="1" Margin="5" FontWeight="Bold" />
-        <Label Content="Pause:" Grid.Column="0" Grid.Row="2" Margin="20,5,5,5" FontWeight="Bold" />
-        <Label Content="Cycle Forward:" Grid.Column="0" Grid.Row="3" Margin="20,5,5,5" FontWeight="Bold" />
-        <Label Content="Cycle Backward:" Grid.Column="0" Grid.Row="4" Margin="20,5,5,5" FontWeight="Bold" />
-        <Label Content="Randomized Login:" Grid.Column="0" Grid.Row="5" Margin="5" FontWeight="Bold" />
+        <TextBlock Text="Keybinds:" Grid.Column="0" Grid.Row="1" Margin="10" FontWeight="Bold" />
+        <TextBlock Text="Pause:" Grid.Column="0" Grid.Row="2" Margin="30,10,5,10" FontWeight="Bold" />
+        <TextBlock Text="Cycle Forward:" Grid.Column="0" Grid.Row="3" Margin="30,10,5,10" FontWeight="Bold" />
+        <TextBlock Text="Cycle Backward:" Grid.Column="0" Grid.Row="4" Margin="30,10,5,10" FontWeight="Bold" />
+        <TextBlock Text="Cycle Random:" Grid.Column="0" Grid.Row="5" Margin="30,10,5,10" FontWeight="Bold" />
+        <TextBlock Text="Randomized Login:" Grid.Column="0" Grid.Row="6" Margin="10" FontWeight="Bold" />
         <TextBox x:Name="txtBox_KeyPause" Grid.Row="2" Style="{StaticResource textBoxKeybindVlaidations}">
             <TextBox.Text>
                 <Binding Path="keyPauseText" UpdateSourceTrigger="PropertyChanged"/>
@@ -60,7 +67,12 @@
                 <Binding Path="keyCycleBText" UpdateSourceTrigger="PropertyChanged"/>
             </TextBox.Text>
         </TextBox>
-        <ComboBox Name="cbx_RandomLogin" Height="{Binding Height, ElementName=txtBox_KeyCycleBackward}" Width="100" Grid.Column="1" Grid.Row="5" 
+        <TextBox x:Name="txtBox_KeyCycleRandom" Grid.Row="5" Style="{StaticResource textBoxKeybindVlaidations}">
+            <TextBox.Text>
+                <Binding Path="keyCycleBText" UpdateSourceTrigger="PropertyChanged"/>
+            </TextBox.Text>
+        </TextBox>
+        <ComboBox Name="cbx_RandomLogin" Height="{Binding Height, ElementName=txtBox_KeyCycleBackward}" Width="100" Grid.Column="1" Grid.Row="6" 
                   HorizontalAlignment="Left" VerticalContentAlignment="Center" SelectionChanged="cbx_RandomLogin_SelectionChanged">
             <ComboBoxItem Content="No" />
             <ComboBoxItem Content="Yes" />

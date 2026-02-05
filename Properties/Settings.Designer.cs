@@ -82,5 +82,17 @@ namespace GenshinNamecardINICreator.Properties {
                 this["RandomLogin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("a VK_DOWN")]
+        public string KeyCycleRandom {
+            get {
+                return ((string)(this["KeyCycleRandom"]));
+            }
+            set {
+                this["KeyCycleRandom"] = value;
+            }
+        }
     }
 }

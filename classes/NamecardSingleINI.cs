@@ -62,6 +62,19 @@ namespace GenshinNamecardINICreator.classes
         {
             try
             {
+                int customSpeed = -1;
+                if (File.Exists(iniName))
+                {
+                    var line = File.ReadLines(iniName).Skip(16).FirstOrDefault();
+                    if (!String.IsNullOrEmpty(line))
+                    {
+                        var split = line.Split(" ");
+                        if (split.Length > 1)
+                        {
+                            Int32.TryParse(split[^1], out customSpeed);
+                        }
+                    }
+                }
                 using (var fs = new FileStream(iniName, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
                     using (var fw = new StreamWriter(fs))
@@ -82,7 +95,8 @@ namespace GenshinNamecardINICreator.classes
                         fw.WriteLine("post $ActiveNameCard = 0");
                         fw.WriteLine("");
                         fw.WriteLine("if $ActiveNameCard == 1 && $halfspeed < $gamefps");
-                        if (sortedFiles.Count > 900) { fw.WriteLine("\t$halfspeed = $halfspeed + 59"); }
+                        if (customSpeed != -1) { fw.WriteLine(String.Format("\t$halfspeed = $halfspeed + {0}", customSpeed)); }
+                        else if (sortedFiles.Count > 900) { fw.WriteLine("\t$halfspeed = $halfspeed + 59"); }
                         else { fw.WriteLine("\t$halfspeed = $halfspeed + 30"); }
                         fw.WriteLine("\t$speedtoggle = 0");
                         fw.WriteLine("endif");

@@ -8,7 +8,7 @@
         Title="Select Namecard" Height="130" Width="425" FontSize="16" 
         Background="LightGray" WindowStartupLocation="CenterOwner" ResizeMode="NoResize">
     <Window.Resources>
-        <Style TargetType="{x:Type Button}">
+        <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
             <Setter Property="Height" Value="35" />
             <Setter Property="Width" Value="60" />
         </Style>
@@ -34,9 +34,9 @@
                     Grid.ColumnSpan="3"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top">
-            <Button Content="Create" Grid.Column="0" Margin="0,0,75,0" Click="Button_Click_Confirm">
+            <Button Content="Create" Grid.Column="0" Click="Button_Click_Confirm">
                 <Button.Style>
-                    <Style TargetType="{x:Type Button}">
+                    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
                         <Setter Property="IsEnabled" Value="True" />
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding SelectedIndex, ElementName=cbx_SelectNamecardToApply}" Value="-1">
@@ -46,7 +46,8 @@
                     </Style>
                 </Button.Style>
             </Button>
-            <Button Content="Cancel" Grid.Column="1" Click="Button_Click_Cancel" />
+            <TextBlock Focusable="False" IsEnabled="False" Width="50" />
+            <Button Content="Cancel" Grid.Column="1" Click="Button_Click_Cancel" Style="{StaticResource BaseButtonStyle}" />
         </StackPanel>
     </Grid>
 </Window>
