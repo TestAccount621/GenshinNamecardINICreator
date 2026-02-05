@@ -73,7 +73,6 @@ namespace GenshinNamecardINICreator.UI
                                         catch (Exception ex)
                                         {
                                             MessageBox.Show(ex.Message);
-                                            throw;
                                         }
                                     }
                                 }

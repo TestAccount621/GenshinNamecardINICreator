@@ -9,17 +9,41 @@
         Title="Genshin Namecard Creator" Height="450" Width="850" FontSize="16" Background="LightGray"
         ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <Style x:Key="LeftSideButtonStyle" TargetType="{x:Type Button}">
+        <Style x:Key="LeftSideButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
             <!--Proper changing of the mouseover color can wait since at that point I might as well make a nice looking button to use.-->
-            <Setter Property="Height" Value="50" />
             <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Margin" Value="0,5,0,0" />
+            <Setter Property="Width" Value="125" />
+            <Setter Property="Margin" Value="0 5 0 0" />
             <Setter Property="IsTabStop" Value="False" />
             <EventSetter Event="Click" Handler="Button_Click_PageChange" />
             <Style.Triggers>
                 <Trigger Property="Tag" Value="Active">
-                    <Setter Property="Background" Value="GreenYellow" />
+                    <Setter Property="Background" Value="Wheat" />
                 </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Tag" Value="Active" />
+                        <Condition Property="IsMouseOver" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                    To="PapayaWhip"
+                                                    Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.EnterActions>
+                    <MultiTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                                    To="Wheat"
+                                                    Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </MultiTrigger.ExitActions>
+                </MultiTrigger>
             </Style.Triggers>
         </Style>
         <Style x:Key="TopButtonsStyle" TargetType="{x:Type Button}">

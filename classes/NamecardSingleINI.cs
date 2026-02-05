@@ -50,7 +50,6 @@ namespace GenshinNamecardINICreator.classes
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-                throw;
             }
         }
         /// <summary>
@@ -176,8 +175,7 @@ namespace GenshinNamecardINICreator.classes
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                throw;
+                MessageBox.Show("Error when creating " + namecard.Name + "'s ini file.\n" + e.Message);
             }
         }
 
@@ -239,8 +237,7 @@ namespace GenshinNamecardINICreator.classes
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
-                throw;
+                MessageBox.Show("Error when creating " + namecard.Name + "'s ini file.\n" + e.Message);
             }
         }
     }

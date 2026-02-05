@@ -8,6 +8,7 @@ namespace GenshinNamecardINICreator.classes
 {
     public class NamecardMergedINI
     {
+        // TODO Make this process async so that I can add in a loading bar/screen since this might take a while. Also, finish the style on the last 2 buttons on top.
         private string _fileName = "NameCardCollection.ini";
         private string _hashA = "";
         private string _hashD = "";
@@ -149,7 +150,7 @@ namespace GenshinNamecardINICreator.classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Failed to create 'NameCardCollection.ini'.\n" + ex.Message);
             }
         }
 

@@ -19,7 +19,10 @@
                                 Background="{TemplateBinding Background}" 
                                 Padding="{TemplateBinding Padding}" 
                                 Margin="{TemplateBinding Margin}">
-                            <ContentPresenter />
+                            <ContentPresenter 
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Margin="2"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
