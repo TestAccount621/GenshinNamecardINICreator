@@ -1,0 +1,116 @@
+﻿<UserControl x:Class="GenshinNamecardINICreator.Components.SettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GenshinNamecardINICreator.Components"
+             xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="{StaticResource PrimaryBackground}" FontSize="18">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Grid.Column" Value="0" />
+                <Setter Property="FontWeight" Value="Bold" />
+                <Setter Property="Margin" Value="10" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+            <Style x:Key="IndentTextBlockStyle" TargetType="{x:Type TextBlock}" BasedOn="{StaticResource {x:Type TextBlock}}">
+                <Setter Property="Margin" Value="30 10 5 10" />
+            </Style>
+            <Style x:Key="TextBoxKeybindInputStyle" TargetType="TextBox">
+                <Setter Property="Grid.Column" Value="1" />
+                <Setter Property="IsReadOnly" Value="True" />
+                <Setter Property="IsReadOnlyCaretVisible" Value="False" />
+                <Setter Property="IsUndoEnabled" Value="False" />
+                <Setter Property="Height" Value="30" />
+                <Setter Property="Width" Value="400" />
+                <Setter Property="HorizontalAlignment" Value="Left" />
+                <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="Background" Value="DarkGray" />
+                <Style.Triggers>
+                    <Trigger Property="IsFocused" Value="True">
+                        <Setter Property="Background" Value="White" />
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
+        <!--TextBlock labels-->
+        <TextBlock Text="Keybinds:" Grid.Row="0" />
+        <TextBlock Text="Pause:" Grid.Row="1" Style="{StaticResource IndentTextBlockStyle}" />
+        <TextBlock Text="Cycle Forward:" Grid.Row="2" Style="{StaticResource IndentTextBlockStyle}" />
+        <TextBlock Text="Cycle Backward:" Grid.Row="3" Style="{StaticResource IndentTextBlockStyle}" />
+        <TextBlock Text="Cycle Random:" Grid.Row="4" Style="{StaticResource IndentTextBlockStyle}" />
+        <TextBlock Text="Randomized Login:" Grid.Row="5" />
+        <!--TextBox inputs-->
+        <TextBox x:Name="txtBox_KeyPause" Grid.Row="1" Style="{StaticResource TextBoxKeybindInputStyle}" Text="{Binding KeyPause, Mode=OneWay}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="PreviewKeyUp">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBox_PreviewKeyUp" />
+                </Behaviors:EventTrigger>
+                <Behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBoxHotKeys_KeyDown" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </TextBox>
+        <TextBox x:Name="txtBox_KeyCycleForward" Grid.Row="2" Style="{StaticResource TextBoxKeybindInputStyle}" Text="{Binding KeyCycleForward, Mode=OneWay}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="PreviewKeyUp">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBox_PreviewKeyUp" />
+                </Behaviors:EventTrigger>
+                <Behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBoxHotKeys_KeyDown" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </TextBox>
+        <TextBox x:Name="txtBox_KeyCycleBackward" Grid.Row="3" Style="{StaticResource TextBoxKeybindInputStyle}" Text="{Binding KeyCycleBackward, Mode=OneWay}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="PreviewKeyUp">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBox_PreviewKeyUp" />
+                </Behaviors:EventTrigger>
+                <Behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBoxHotKeys_KeyDown" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </TextBox>
+        <TextBox x:Name="txtBox_KeyCycleRandom" Grid.Row="4" Style="{StaticResource TextBoxKeybindInputStyle}" Text="{Binding KeyCycleRandom, Mode=OneWay}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="PreviewKeyUp">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBox_PreviewKeyUp" />
+                </Behaviors:EventTrigger>
+                <Behaviors:EventTrigger EventName="PreviewKeyDown">
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="TextBoxHotKeys_KeyDown" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+        </TextBox>
+        <!--Randomized Login Combobox-->
+        <ComboBox Width="100"
+                  Grid.Column="1"
+                  Grid.Row="5"
+                  HorizontalAlignment="Left"
+                  VerticalAlignment="Center"
+                  SelectedIndex="{Binding RandomLogin, Mode=OneWay}">
+            <Behaviors:Interaction.Triggers>
+                <Behaviors:EventTrigger EventName="SelectionChanged" >
+                    <Behaviors:CallMethodAction TargetObject="{Binding}" MethodName="RandomLoginSelectionChanged" />
+                </Behaviors:EventTrigger>
+            </Behaviors:Interaction.Triggers>
+            <ComboBoxItem Content="No" />
+            <ComboBoxItem Content="Yes" />
+        </ComboBox>
+    </Grid>
+</UserControl>

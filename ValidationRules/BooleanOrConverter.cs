@@ -1,4 +1,5 @@
-﻿using System.Windows.Data;
+﻿using System.Windows;
+using System.Windows.Data;
 
 namespace GenshinNamecardINICreator.ValidationRules
 {
@@ -8,9 +9,12 @@ namespace GenshinNamecardINICreator.ValidationRules
         {
             foreach (object value in values)
             {
-                if ((bool)value == true)
+                if (value != null && value != DependencyProperty.UnsetValue)
                 {
-                    return true;
+                    if ((bool)value == true)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

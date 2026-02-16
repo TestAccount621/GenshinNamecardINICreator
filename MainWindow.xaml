@@ -4,102 +4,27 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GenshinNamecardINICreator"
-        xmlns:statics="clr-namespace:GenshinNamecardINICreator.classes"
+        xmlns:views="clr-namespace:GenshinNamecardINICreator.Views" 
+        xmlns:vms="clr-namespace:GenshinNamecardINICreator.ViewModels" 
+        xmlns:modalcontrol="clr-namespace:ModalControl;assembly=ModalControl"
+        xmlns:Behaviors="http://schemas.microsoft.com/xaml/behaviors"
         mc:Ignorable="d"
-        Title="Genshin Namecard Creator" Height="450" Width="850" FontSize="16" Background="LightGray"
-        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+        Title="Genshin Namecard Creator" Height="450" Width="850" FontSize="18" Background="LightGray"
+        ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <Window.Resources>
-        <Style x:Key="LeftSideButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
-            <!--Proper changing of the mouseover color can wait since at that point I might as well make a nice looking button to use.-->
-            <Setter Property="Grid.Column" Value="0" />
-            <Setter Property="Width" Value="125" />
-            <Setter Property="Margin" Value="0 5 0 0" />
-            <Setter Property="IsTabStop" Value="False" />
-            <EventSetter Event="Click" Handler="Button_Click_PageChange" />
-            <Style.Triggers>
-                <Trigger Property="Tag" Value="Active">
-                    <Setter Property="Background" Value="Wheat" />
-                </Trigger>
-                <MultiTrigger>
-                    <MultiTrigger.Conditions>
-                        <Condition Property="Tag" Value="Active" />
-                        <Condition Property="IsMouseOver" Value="True" />
-                    </MultiTrigger.Conditions>
-                    <MultiTrigger.EnterActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                    To="PapayaWhip"
-                                                    Duration="0:0:0.1" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.EnterActions>
-                    <MultiTrigger.ExitActions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                    To="Wheat"
-                                                    Duration="0:0:0.1" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </MultiTrigger.ExitActions>
-                </MultiTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="TopButtonsStyle" TargetType="{x:Type Button}">
-            <Setter Property="Height" Value="{Binding Height, ElementName=txtBox_OutputFolder}" />
-            <Setter Property="Width" Value="{Binding Height, RelativeSource={RelativeSource Mode=Self}}" />
-            <Setter Property="IsTabStop" Value="False" />
-        </Style>
+        <DataTemplate DataType="{x:Type vms:ConfirmationWindowViewModel}">
+            <views:ConfirmationWindowView />
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vms:ProgressBarWindowViewModel}">
+            <views:ProgressBarWindowView />
+        </DataTemplate>
     </Window.Resources>
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="2" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Vertical" Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Margin="5">
-            <Button x:Name="btn_INICreation" Content="Create Mod" Tag="Active" Style="{StaticResource LeftSideButtonStyle}" />
-            <Button x:Name="btn_GIFConvert" Content="Convert Image" Style="{StaticResource LeftSideButtonStyle}" />
-            <Button x:Name="btn_HashesChange" Content="Update Hashes" Style="{StaticResource LeftSideButtonStyle}" />
-        </StackPanel>
-        <Button x:Name="btn_Settings" Content="Settings" Margin="5" Grid.Row="2" VerticalAlignment="Bottom" Style="{StaticResource LeftSideButtonStyle}"/>
-        <Rectangle Fill="Black" Grid.Column="1" Grid.Row="0" Grid.RowSpan="10" />
-        <DockPanel FlowDirection="RightToLeft" Margin="5" Grid.Row="0" Grid.Column="2">
-            <Button x:Name="btn_OpenFolder" 
-                    Margin="5,5,5,5" 
-                    Click="Button_Click_SelectOutputFolder" 
-                    ToolTip="Select Destination Folder" 
-                    Style="{StaticResource TopButtonsStyle}">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
-                    <Image Source="pack://application:,,,/Icons/open-folder.png" />
-                </StackPanel>
-            </Button>
-            <Button x:Name="btn_Refresh" 
-                    Margin="0,5,5,5" 
-                    Click="Button_Click_Refresh"
-                    ToolTip="Refresh Destination Folder"
-                    Style="{StaticResource TopButtonsStyle}">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
-                    <Image Source="pack://application:,,,/Icons/refresh.png" />
-                </StackPanel>
-            </Button>
-            <TextBox x:Name="txtBox_OutputFolder" 
-                     Margin="0,5,5,5" 
-                     Height="45" 
-                     HorizontalAlignment="Stretch" 
-                     Text="Some Output Folder" 
-                     IsReadOnly="True"
-                     IsTabStop="False"
-                     HorizontalScrollBarVisibility="Auto"
-                     VerticalContentAlignment="Center"
-                     IsUndoEnabled="False" />
-        </DockPanel>
-        <Frame x:Name="frame_PageSelected" Grid.Column="2" Grid.Row="1" Grid.RowSpan="2" NavigationUIVisibility="Hidden" />
-    </Grid>
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <Grid>
+            <views:HomeView DataContext="{Binding HomeViewViewModel}" />
+            <modalcontrol:Modal Panel.ZIndex="1" IsOpen="{Binding IsModalOpen}">
+                <ContentControl Content="{Binding CurrentModalViewModel}" />
+            </modalcontrol:Modal>
+        </Grid>
+    </ScrollViewer>
 </Window>

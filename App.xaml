@@ -1,12 +1,20 @@
 ﻿<Application x:Class="GenshinNamecardINICreator.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:GenshinNamecardINICreator"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:GenshinNamecardINICreator" 
+             xmlns:converters="clr-namespace:GenshinNamecardINICreator.Converters"
+             DispatcherUnhandledException="Application_DispatcherUnhandledException">
     <Application.Resources>
+        <SolidColorBrush x:Key="PrimaryBackground" Color="#545E75" />
+        <SolidColorBrush x:Key="SubmitButtonColor" Color="#63ADF2" />
+        <SolidColorBrush x:Key="SubmitButtonHighlightColor" Color="#4686c2" />
+        <SolidColorBrush x:Key="PrimaryButtonColor" Color="#82A0BC" />
+        <SolidColorBrush x:Key="PrimaryButtonHighlightColor" Color="#304D6D" />
+        <converters:CloneMultiConverter x:Key="CloneMultiConverter" />
         <Style x:Key="BaseButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Padding" Value="6" />
-            <Setter Property="Background" Value="White" />
+            <Setter Property="Background" Value="{StaticResource PrimaryButtonColor}" />
+            <Setter Property="Foreground" Value="White" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
@@ -14,15 +22,13 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border 
-                                CornerRadius="3" 
+                        <Border CornerRadius="3"
                                 Background="{TemplateBinding Background}" 
                                 Padding="{TemplateBinding Padding}" 
                                 Margin="{TemplateBinding Margin}">
-                            <ContentPresenter 
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                Margin="2"/>
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="2" />
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
@@ -32,24 +38,66 @@
                     <Trigger.EnterActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                    To="PapayaWhip"
-                                                    Duration="0:0:0.1" />
+                                <converters:SolidColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            ToBrush="{StaticResource PrimaryButtonHighlightColor}"
+                                            Duration="0:0:0.1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.EnterActions>
                     <Trigger.ExitActions>
                         <BeginStoryboard>
                             <Storyboard>
-                                <ColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
-                                                    To="White"
-                                                    Duration="0:0:0.1" />
+                                <converters:SolidColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                            ToBrush="{StaticResource PrimaryButtonColor}"
+                                            Duration="0:0:0.1" />
                             </Storyboard>
                         </BeginStoryboard>
                     </Trigger.ExitActions>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Opacity" Value=".6" />
+                    <Setter Property="Opacity" Value=".5" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="SubmitButtonStyle" TargetType="{x:Type Button}" BasedOn="{StaticResource BaseButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource SubmitButtonColor}" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="3"
+                                Background="{TemplateBinding Background}" 
+                                Padding="{TemplateBinding Padding}" 
+                                Margin="{TemplateBinding Margin}">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="2" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <converters:SolidColorAnimation Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"
+                                            ToBrush="{StaticResource SubmitButtonHighlightColor}"
+                                            Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <converters:SolidColorAnimation Storyboard.TargetProperty="Background.(SolidColorBrush.Color)"
+                                            ToBrush="{StaticResource SubmitButtonColor}"
+                                            Duration="0:0:0.1" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.ExitActions>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Opacity" Value=".5" />
                 </Trigger>
             </Style.Triggers>
         </Style>

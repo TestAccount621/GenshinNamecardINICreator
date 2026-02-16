@@ -1,5 +1,4 @@
-﻿using GenshinNamecardINICreator.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace GenshinNamecardINICreator
+namespace GenshinNamecardINICreator.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow2.xaml
+    /// Interaction logic for ProgressBarView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ProgressBarWindowView : UserControl
     {
-        public MainWindow()
+        public ProgressBarWindowView()
         {
             InitializeComponent();
-
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            Closing += ((MainViewModel)DataContext).OnWindowClosing;
         }
     }
 }
