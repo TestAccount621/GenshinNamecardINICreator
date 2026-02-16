@@ -162,7 +162,6 @@ namespace GenshinNamecardINICreator.ViewModels
             {
                 _namecardHashesPageComboBoxItemViewModels.Add(new NamecardHashesPageComboBoxItemViewModel(namecard));
             }
-            SelectedNamecardHashesPageComboBoxItemViewModel = _namecardHashesPageComboBoxItemViewModels[0];
         }
 
 
