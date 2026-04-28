@@ -1,3 +1,7 @@
+# Update Notice
+I am working on an update for this so it can be used for more UI elements, so I renamed the project to match it. Once I finish the update, I'll push it here, but currently this only makes Namecard mods still. I just renamed it now to more force myself to put time into it so it gets done quicker.
+
+
 # What is this?
 This program converts any given png, jpg, or gif image file into the Genshin Impact Namecard format, then you can combine those in any order into a singular merged mod that overwrites any namecard you want, up until 6.3 (Luna 4). I have not tested all 225 namecards to make 100% sure they are correct, but they should be all correct except for 2 that I know have issues:
 * Genshin Impact: A New World - This is the first namecard you get and the top banner in the namecard selection screen for this one is actually 2 different hashes combined while every other namecard is a single hash. I am not going to put in the time to figure out how to make that single instance work, so the top banner for this namecard is incorrect and will stay that way unless someone else wants to figure it out.
@@ -25,6 +29,3 @@ Preview Hash: <img width="274" height="289" alt="previewbanner" src="https://git
 Banner Hash: <img width="293" height="247" alt="bannerhash" src="https://github.com/user-attachments/assets/3ee42f36-2ee3-4de6-b906-3ef9523ebf6f" />
 
 If the namecard was released after 6.3/Luna 4 and isn't in the program, just click New on the "Update Hashes" page and put in the relevant hashes and name using the method above, otherwise find the namecard in the drop down list and Edit it as needed if the hashes changed on an update.
-
-## Future Updates
-I might add more Genshin Impact UI elements like a character's skill, burst, etc, icons to this since it should be pretty trivial depending on how much free time I have and if they are all standardized between characters. It took me over 6 hours to get and input all of the namecard hashes. I'm not doing that again if I don't have to, so no promises.
